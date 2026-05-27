@@ -4,7 +4,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class EnvConfigImpl {
+public class EnvConfig {
 
     static {
         Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
