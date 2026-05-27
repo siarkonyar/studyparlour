@@ -1,4 +1,4 @@
-package com.studyparlour.studyparlour.config.concretes;
+package com.studyparlour.studyparlour.config;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.studyparlour.studyparlour.model.concretes;
+package com.studyparlour.studyparlour.model;
 
 import com.studyparlour.studyparlour.model.enums.Role;
 import jakarta.persistence.*;

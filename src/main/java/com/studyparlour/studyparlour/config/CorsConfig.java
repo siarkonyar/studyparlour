@@ -1,4 +1,4 @@
-package com.studyparlour.studyparlour.config.concretes;
+package com.studyparlour.studyparlour.config;
 
 import java.util.List;
 
