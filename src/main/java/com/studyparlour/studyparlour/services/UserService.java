@@ -1,7 +1,9 @@
 package com.studyparlour.studyparlour.services;
 
 import com.studyparlour.studyparlour.dataAccess.UserRepository;
+import com.studyparlour.studyparlour.dto.RegisterRequestDto;
 import com.studyparlour.studyparlour.models.User;
+import com.studyparlour.studyparlour.models.enums.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
 import java.util.stream.Collectors;
 
 //UserDetailsService comes from spring security
@@ -38,6 +41,23 @@ public class UserService implements UserDetailsService {
                 user.getPassword(),
                 authorities
         );
+    }
+
+    public String register(RegisterRequestDto request) {
+        if(userRepository.existsUserByEmail(request.getEmail())){
+            throw new IllegalStateException("A User with this email already exists.");
+        }
+
+        User user = User.builder()
+                .username(request.getUsername())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .roles(Set.of(Role.ROLE_USER))
+                .build();
+
+        userRepository.save(user);
+
+        return "User registered.";
     }
 
 
