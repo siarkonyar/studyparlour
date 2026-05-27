@@ -1,6 +1,6 @@
-package com.studyparlour.studyparlour.model;
+package com.studyparlour.studyparlour.models;
 
-import com.studyparlour.studyparlour.model.enums.Role;
+import com.studyparlour.studyparlour.models.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
