@@ -1,5 +1,6 @@
-package com.studyparlour.studyparlour.config;
+package com.studyparlour.studyparlour.config.concretes;
 
+import com.studyparlour.studyparlour.config.abstracts.SecurityConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -10,9 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+@Configurations
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfigImpl implements SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
