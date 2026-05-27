@@ -3,6 +3,7 @@ package com.studyparlour.studyparlour.models;
 import com.studyparlour.studyparlour.models.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +14,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Builder - comes from lombok. learn how to implement propper builders first
+@Builder //comes from lombok. learn how to implement propper builders first
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
