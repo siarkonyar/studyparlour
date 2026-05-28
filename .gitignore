@@ -38,3 +38,7 @@ out/
 
 ### Environment Variables ###
 .env
+
+### Public and private keys ###
+certs/
+certs/*
