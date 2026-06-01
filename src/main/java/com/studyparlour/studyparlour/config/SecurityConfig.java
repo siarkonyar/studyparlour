@@ -59,7 +59,10 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())                       // uses CorsConfigurationSource bean
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**").permitAll()
                         .requestMatchers("/ws/**").authenticated()
                         .requestMatchers("/auth/admin/**").hasAuthority("SCOPE_ROLE_ADMIN")
                         .requestMatchers("/auth/user/**").hasAnyAuthority("SCOPE_ROLE_USER", "SCOPE_ROLE_ADMIN")
