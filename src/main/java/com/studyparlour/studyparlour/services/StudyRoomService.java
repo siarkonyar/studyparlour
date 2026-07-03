@@ -1,5 +1,6 @@
 package com.studyparlour.studyparlour.services;
 
+import com.studyparlour.studyparlour.core.mappers.StudyRoomMapper;
 import com.studyparlour.studyparlour.dataAccess.StudyRoomRepository;
 import com.studyparlour.studyparlour.dto.CreateStudyRoomRequestDto;
 import com.studyparlour.studyparlour.dto.StudyRoomResponseDto;
@@ -12,18 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class StudyRoomService {
     private final StudyRoomRepository studyRoomRepository;
-
-    private StudyRoomResponseDto toResponseDto(StudyRoom room) {
-        return new StudyRoomResponseDto(
-                room.getId(),
-                room.getName(),
-                room.getIsTemporary(),
-                room.getMaxParticipants(),
-                room.getCreatedAt(),
-                room.getOwner().getId(),
-                room.getOwner().getUsername()
-        );
-    }
+    private final StudyRoomMapper studyRoomMapper;
 
     public StudyRoomResponseDto createRoom(CreateStudyRoomRequestDto requestDto, User owner) {
         StudyRoom room = StudyRoom.builder()
@@ -35,6 +25,6 @@ public class StudyRoomService {
 
         StudyRoom saved = studyRoomRepository.save(room);
 
-        return toResponseDto(room);
+        return studyRoomMapper.studyRoomToStudyRoomResponseDto(room);
     }
 }
