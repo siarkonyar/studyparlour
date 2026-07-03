@@ -9,6 +9,8 @@ import com.studyparlour.studyparlour.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class StudyRoomService {
@@ -25,6 +27,11 @@ public class StudyRoomService {
 
         StudyRoom saved = studyRoomRepository.save(room);
 
+        return studyRoomMapper.studyRoomToStudyRoomResponseDto(saved);
+    }
+
+    public StudyRoomResponseDto getRoomById(Long id){
+        StudyRoom room = studyRoomRepository.findById(id).orElseThrow();
         return studyRoomMapper.studyRoomToStudyRoomResponseDto(room);
     }
 }
