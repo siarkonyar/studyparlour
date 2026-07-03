@@ -2,7 +2,9 @@ package com.studyparlour.studyparlour.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 public class CreateStudyRoomRequestDto {
     @NotBlank
     @Size(min=4, max = 20)
