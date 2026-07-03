@@ -10,6 +10,8 @@ import com.studyparlour.studyparlour.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class StudyRoomServiceImpl implements StudyRoomService {
@@ -34,5 +36,11 @@ public class StudyRoomServiceImpl implements StudyRoomService {
     public StudyRoomResponseDto getRoomById(Long id){
         StudyRoom room = studyRoomRepository.findById(id).orElseThrow();
         return studyRoomMapper.studyRoomToStudyRoomResponseDto(room);
+    }
+
+    @Override
+    public List<StudyRoomResponseDto> getStudyRoomsByOwner(User owner) {
+        List<StudyRoom> rooms = studyRoomRepository.findByOwner(owner);
+        return studyRoomMapper.studyRoomsToStudyRoomResponseDtos(rooms);
     }
 }
