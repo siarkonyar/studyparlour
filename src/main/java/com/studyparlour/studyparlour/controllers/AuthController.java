@@ -1,10 +1,10 @@
 package com.studyparlour.studyparlour.controllers;
 
+import com.studyparlour.studyparlour.business.abstracts.TokenService;
+import com.studyparlour.studyparlour.business.abstracts.UserService;
 import com.studyparlour.studyparlour.config.SecurityConfig;
 import com.studyparlour.studyparlour.dto.AuthRequestDto;
 import com.studyparlour.studyparlour.dto.RegisterRequestDto;
-import com.studyparlour.studyparlour.services.TokenService;
-import com.studyparlour.studyparlour.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;

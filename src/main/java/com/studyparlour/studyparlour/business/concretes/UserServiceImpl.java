@@ -1,6 +1,7 @@
-package com.studyparlour.studyparlour.services;
+package com.studyparlour.studyparlour.business.concretes;
 
-import com.studyparlour.studyparlour.dataAccess.UserRepository;
+import com.studyparlour.studyparlour.business.abstracts.UserService;
+import com.studyparlour.studyparlour.dataAccess.abstracts.UserRepository;
 import com.studyparlour.studyparlour.dto.RegisterRequestDto;
 import com.studyparlour.studyparlour.models.User;
 import com.studyparlour.studyparlour.models.enums.Role;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 //it is for spring security to look for the user when it creates the token
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService, UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -44,6 +45,7 @@ public class UserService implements UserDetailsService {
         );
     }
 
+    @Override
     public String register(RegisterRequestDto request) {
         if(userRepository.existsUserByEmail(request.getEmail())){
             throw new IllegalStateException("A User with this email already exists.");

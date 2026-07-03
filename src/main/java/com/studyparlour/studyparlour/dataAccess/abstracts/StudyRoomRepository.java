@@ -1,4 +1,4 @@
-package com.studyparlour.studyparlour.dataAccess;
+package com.studyparlour.studyparlour.dataAccess.abstracts;
 
 import com.studyparlour.studyparlour.models.StudyRoom;
 import com.studyparlour.studyparlour.models.User;

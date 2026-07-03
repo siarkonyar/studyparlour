@@ -1,5 +1,6 @@
-package com.studyparlour.studyparlour.services;
+package com.studyparlour.studyparlour.business.concretes;
 
+import com.studyparlour.studyparlour.business.abstracts.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -14,12 +15,13 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class TokenService {
+public class TokenServiceImpl implements TokenService {
     private final JwtEncoder jwtEncoder;
 
     @Value("${jwt.expiration-ms}")
     private long expirationMs;
 
+    @Override
     public String generateToken(Authentication authentication){
         Instant now = Instant.now();
 
